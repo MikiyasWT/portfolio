@@ -5,6 +5,7 @@ import GlobalStyle from "./styles/GlobalStyle";
 import ContactMe from "./pages/ContactMe";
 import MyWork from "./pages/MyWork";
 import { BrowserRouter,Routes, Route} from "react-router-dom"
+import MovieDetail from "./pages/MovieDetail";
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
         <Routes>
           <Route exact path="/"  element={ <AboutUs />} />
 
-          <Route path="/work" element={ <MyWork /> }  />
+          <Route exact path="/work" element={ <MyWork /> }  />
+          
+          <Route path="/work/:id" element={ <MovieDetail /> }  />
 
           <Route path="/contact" element={ <ContactMe />} />
             

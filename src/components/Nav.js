@@ -6,7 +6,7 @@ const Nav = () => {
     return(
         <NavBar>
             
-            <Link to="/" id="logo">Capture</Link>
+            <Link to="/" id="logo">DevMike</Link>
 
             <ul>
                 
@@ -45,8 +45,8 @@ a{
 }
 
 #logo {
-    font-size:1.5rem;
-    font-family:"Lobster",cursive;
+    font-size:2rem;
+    font-family: 'Lobster', cursive;
     font-weight:lighter;
 }
 ul {
