@@ -5,12 +5,37 @@ import diaphragm from "../img/diaphragm.svg"
 import home2 from "../img/home2.png"
 import { About,Description,Image,Hide } from "../styles/style";
 import styled from "styled-components"
+import {useScroll,useScrollHook} from "./useScroll"
+import {scrollReveal} from "../animation"
+import { useEffect } from "react"
+import { useAnimation } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 
 
 const ServicesSection = () => {
+  // const controls = useAnimation()
+  // const [element,view] = useInView({threshold:0.5})
 
+
+  // useEffect(()=>{
+  //   if(view){
+  //     controls.start("show")
+  // }
+  // else{
+  //     controls.start("hidden")
+  // }
+
+  // },[element,view])
+
+
+  const [element,controls] = useScrollHook()
+    
     return (
-        <Services>
+        <Services 
+             variants={scrollReveal}
+             animate={controls} 
+             initial="hiddens"
+             ref={element}  >
           <Description>
             <h2>High <span>quality</span> services</h2>
             
@@ -35,7 +60,7 @@ const ServicesSection = () => {
              <Card>
                <div className="icon">
                   <img src={diaphragm} alt="diaphragm icon"/>
-                  <h3>Diaphragm</h3>
+                  <h3>Automation </h3>
                 </div>
                 <p>lorem ipsum  dolor sit amet</p>
              </Card>
@@ -72,15 +97,22 @@ p {
   width:70%;
   padding:2rem 0rem 4rem 0rem;
 }
+
+
 `;
 
 const Cards = styled.div`
 display:flex;
 flex-wrap:wrap;
+
+@media (max-width:1300px) {
+  justify-content:center;
+  }
 `;
 
 const Card = styled.div`
-flex-basis:20rem;
+flex-basis:18rem;
+
 .icon {
   display:flex;
   align-items:center;
